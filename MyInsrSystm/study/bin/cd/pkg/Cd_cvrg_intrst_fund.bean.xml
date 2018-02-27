@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="New_intrst_fund" class="cd.pkg.Cd_cvrg_intrst_fund">
+		<property name="riskCode" value="44440101">
+		</property>
+		<property name="label" value="财富管家2018">
+		</property>
+		<property name="cvrgLevle" ref="cvrgLevle">
+		</property>
+		<property name="cash_formula_id" ref="cash_Valu_Formula">
+		</property>
+	</bean>
+	<bean id="cvrgLevle"
+		class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField" value="cd.pkg.cvrgLevel.base" />
+	</bean>
+	<bean id="cash_Valu_Formula" class="cvrg_formula.Formula_cvrg_cash_val">
+		<property name="formula_id" value="Cash0001" />
+	</bean>
+
+</beans>
