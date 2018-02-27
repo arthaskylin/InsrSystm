@@ -1,6 +1,6 @@
 package header;
 
-public class cp_contract
+public class Cd_product
 {
 
 }

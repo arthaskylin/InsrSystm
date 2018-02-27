@@ -2,7 +2,7 @@ package cvrg_formula;
 
 import java.util.ArrayList;
 
-public class formula_cvrg_cash_val extends formula
+public class Formula_cvrg_cash_val extends Formula
 {//计算现金价值
 
 	@Override

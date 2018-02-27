@@ -1,8 +1,8 @@
 package cd.pkg;
 
-import cp.pkg.cpCvrgAdm;
+import cp.pkg.CpCvrgAdm;
 
-public abstract class cvrgAadm
+public abstract class CvrgAadm
 {
 
 	// cvrg顶层类，子类为cdCvrgAdm,cpCvrgAdm
@@ -10,7 +10,7 @@ public abstract class cvrgAadm
 	protected String label;// 名称
 	protected String clauses;// 特约
 	protected cvrgLevel cvrgLevle;// 险种主附标志
-	public cvrgAadm() {
+	public CvrgAadm() {
 	}
 	public String getRiskCode()
 	{

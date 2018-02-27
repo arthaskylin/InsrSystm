@@ -1,5 +1,5 @@
 package cd.pkg;
 
-public enum ProductStatus {
+public enum productStatus {
 	closed, terminated, validated, notvalidated
 }

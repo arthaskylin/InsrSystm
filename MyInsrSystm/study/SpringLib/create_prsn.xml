@@ -2,8 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="NewPrsn" class="cpprsn.cpprsn">
-		<property name="name" value="张三">
+	<bean id="NewOwner" class="cpprsn.Cpprsn">
+		<property name="name" value="投保人">
 		</property>
 		<property name="idntfr" value="00010003">
 		</property>
@@ -11,6 +11,19 @@
 		</property>
 		<property name="sex" value="f">
 		</property>
+		<property name="type" value="1">
+		</property>
 	</bean>
-
+	<bean id="NewInsr" class="cpprsn.Cpprsn">
+		<property name="name" value="被保人">
+		</property>
+		<property name="idntfr" value="00010003">
+		</property>
+		<property name="birthDate" value="1992-01-01">
+		</property>
+		<property name="sex" value="f">
+		</property>
+		<property name="type" value="1">
+		</property>
+	</bean>
 </beans>
