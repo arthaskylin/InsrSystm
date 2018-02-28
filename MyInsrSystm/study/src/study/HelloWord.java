@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import cpprsn.Cpprsn;
+
 public class HelloWord
 {
 	public static void main(String[] args)
@@ -14,5 +16,10 @@ public class HelloWord
 			count = count + i;
 			System.out.println(count);
 		}
+		Cpprsn prs = new Cpprsn();
+//		String cllss = prs.getClass();
+//		System.out.println(cllss);
+		// cll oo=new cll();
+
 	}
 }

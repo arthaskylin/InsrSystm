@@ -2,28 +2,61 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="NewBuss" class="NewBusiness.CpNewBussiness">
+		<property name="busninessPara" ref="message">
+		</property>
+	</bean>
 
-	<bean id="cdCvrg1" class="NewBusiness.BussCdcvrg">
-		<property name="cdCvrg_lst">
+
+	<bean id="message" class="NewBusiness.NewBusinessMessage">
+
+		<property name="baseInfoNode">
 			<map>
-				<entry key="riskCode" value="44440101" />
-				<entry key="unit" value="1"></entry>
+				<entry key="appNo" value="170081712282433" />
+				<entry key="issue_date" value="2017-11-28" />
+				<entry key="sale_channel" value="09" />
 			</map>
 		</property>
-	</bean>
-	<bean id="NewBuss" class="NewBusiness.CpNewBussiness">
-		<property name="cdCvrg_lst">
-			<list>
-				<ref bean="cdCvrg1" />
-			</list>
+		<property name="ownerNode">
+			<map>
+				<entry key="name" value="投保人" />
+				<entry key="idntfr" value="0100199001012293" />
+				<entry key="idType" value="1" />
+				<entry key="age" value="28" />
+				<entry key="occ_code" value="01002" />
+				<entry key="sex" value="m" />
+			</map>
+		</property>
+		<property name="relationshipNode" value="1"></property>
+		<property name="insuredNode">
+			<map>
+				<entry key="nama" value="被保人" />
+				<entry key="idntfr" value="0100199001012293" />
+				<entry key="idType" value="1" />
+				<entry key="age" value="28" />
+				<entry key="occ_code" value="01002" />
+				<entry key="sex" value="m" />
+			</map>
+		</property>
+
+		<property name="coverageSetNode">
+			<map>
+				<entry key="riskCode" value="44440101" />
+				<entry key="cvrg_type" value="1" />			 <!-- 主附险标志 1为主险 -->
+				<entry key="unit" value="1" />
+				<entry key="bllng_frequency" value="3" />
+				<entry key="bllng_unit" value="year" />
+				<entry key="bp_option" value="10" />
+				<entry key="bp_unit" value="year" />
+			</map>
 		</property>
 
 
 
 
 
-
 	</bean>
+
 
 
 </beans>

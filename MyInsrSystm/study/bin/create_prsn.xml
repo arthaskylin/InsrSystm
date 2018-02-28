@@ -11,8 +11,6 @@
 		</property>
 		<property name="sex" value="f">
 		</property>
-		<property name="type" value="1">
-		</property>
 	</bean>
 	<bean id="NewInsr" class="cpprsn.Cpprsn">
 		<property name="name" value="被保人">
@@ -22,8 +20,6 @@
 		<property name="birthDate" value="1992-01-01">
 		</property>
 		<property name="sex" value="f">
-		</property>
-		<property name="type" value="1">
 		</property>
 	</bean>
 </beans>

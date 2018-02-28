@@ -3,6 +3,7 @@ package cpprsn;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -16,21 +17,22 @@ public class Cpprsn
 	private int age;
 	private String sex;// m为男，f为女
 	private String occ_code;
-	private String type; // 1：投保人，2:被保人。只是在新保创建的时候使用，不存入数据库
+	// private String type; // 1：投保人，2:被保人。只是在新保创建的时候使用，不存入数据库
 
 	public Cpprsn() {
 	}
 
-	public static Cpprsn createPrsn(String Type)
+	public static Cpprsn createPrsn(Map message)
 	{
+		Cpprsn newPrsn=new Cpprsn();
+		newPrsn.processInfo(message);
+		return newPrsn;
+	}
+
+	private void processInfo(Map message)
+	{
+		// TODO Auto-generated method stub
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("create_prsn.xml");
-		Cpprsn user = (Cpprsn) context.getBean(Type);
-		int age = user.getAge();
-		String sex = user.getSex();
-		System.out.println(age);
-		System.out.println(sex);
-		return user;
 	}
 
 	public String getBirthDate()
@@ -133,16 +135,6 @@ public class Cpprsn
 		if (idntfr.length() != 18) {
 			tool.pkg.log.log_error("证件号长度不够");
 		}
-	}
-
-	public String getType()
-	{
-		return type;
-	}
-
-	public void setType(String type)
-	{
-		this.type = type;
 	}
 
 }

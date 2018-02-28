@@ -17,7 +17,7 @@ import header.Cp_contract;
 public class CpNewBussiness
 {
 	// private Map<String, String> cdCvrg_lst;// 传cd cvrg代码 ,2xn,每一行为cd实例和份数
-	private List<Map> cdCvrg_lst;
+	private NewBusinessMessage busninessPara;
 	private ArrayList<CpCvrgAdm> l_cpCvrg;// 产生的cp保项
 	private Cp_contract l_cntrct;// 创建成功的保单
 	private Cpprsn l_owner;
@@ -34,39 +34,34 @@ public class CpNewBussiness
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext("NewBuss.bean.xml");
 		CpNewBussiness NewBuss = (CpNewBussiness) context.getBean("NewBuss");
+		verifyParam();
 		NewBuss.process_prsn();
 		NewBuss.process_coverages();
 		NewBuss.process_cntrct();
 	}
 
-	public void process_prsn()
-	{// 创建人的实例，赋值给l_owner,l_insur
-
-		this.l_owner = Cpprsn.createPrsn("NewOwner");
-		this.l_insur = Cpprsn.createPrsn("NewInsr");
-
+	private static void verifyParam()
+	{
+		System.out.println("-------------初步校验输入信息中--------");
 	}
 
-	public void process_Cdcvrg()
-	{
-
-		// 根据cd代码创建cd实例，赋值给l_CdCvrg_lst
-
+	public void process_prsn()
+	{// 创建人的实例，赋值给l_owner,l_insur
+		Map ownerMessage = busninessPara.getOwnerNode();
+		String Ralationg = busninessPara.getRelationshipNode();
+		Map insrMessage = busninessPara.getInsuredNode();
+		Cpprsn insr = Cpprsn.createPrsn(insrMessage);
+		Cpprsn owner = Cpprsn.createPrsn(ownerMessage);
+		this.l_insur = insr;
+		this.l_owner = owner;
 	}
 
 	public void process_coverages()
 	{
+		Map cvrgNode = busninessPara.getCoverageSetNode();
 
-		Iterator iter = cdCvrg_lst.iterator();
-		while (iter.hasNext()) {
-			Map map = (Map) iter.next();
-			String riskCode = (String) map.get("riskCode");
-			int unit = (int) map.get("unit");
-			CdCvrgAdm CdCvrg = CdCvrgAdm.createCdcvrgForNewBuss(riskCode);
-			CpCvrgAdm cpCvrg = CpCvrgAdm.create_evt(CdCvrg);
-			l_cpCvrg.add(cpCvrg);
-
-		}
+		CpCvrgAdm cpCvrg = CpCvrgAdm.create_evt(cvrgNode);
+		// l_cpCvrg.add(cpCvrg);
 
 	}// 创建cp 保项实例
 
@@ -74,9 +69,9 @@ public class CpNewBussiness
 	{// 处理保单
 	}
 
-	public void setCdCvrg_lst(List<Map> cdCvrg_lst)
+	public void setBusninessPara(NewBusinessMessage busninessPara)
 	{
-		this.cdCvrg_lst = cdCvrg_lst;
+		this.busninessPara = busninessPara;
 	}
 
 }

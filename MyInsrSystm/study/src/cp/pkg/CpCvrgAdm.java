@@ -1,6 +1,7 @@
 package cp.pkg;
 
 import java.util.Calendar;
+import java.util.Map;
 
 import cd.pkg.CdCvrgAdm;
 import cd.pkg.CvrgAadm;
@@ -14,7 +15,7 @@ import cd.pkg.eum.cvrgEnum.timeUnit;
 import cpprsn.Cpprsn;
 import header.Cp_contract;
 
-public  class CpCvrgAdm extends CvrgAadm
+public class CpCvrgAdm extends CvrgAadm
 {
 	// 保单级别，子类为具体保项
 	private CvrgStatus status;
@@ -31,8 +32,11 @@ public  class CpCvrgAdm extends CvrgAadm
 	private Calendar prem_expiry_date;// 缴费终期
 	private Calendar end_date;// 保单终止时间
 
-	public static CpCvrgAdm create_evt(CdCvrgAdm Cdcvrg)
+	public static CpCvrgAdm create_evt(Map cvrgNode)
 	{
+		String riskCode = (String) cvrgNode.get(cvrgNode);
+		CdCvrgAdm CdCvrg = CdCvrgAdm.createCdcvrgForNewBuss(riskCode);
+		//CdCvrg.getClass();
 		return null;
 	}
 	// 根据cd_cvrg创建cp_cvrg
