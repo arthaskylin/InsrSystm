@@ -7,11 +7,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class CreatePrsn
 {
 
-	public static void main(String Type)
+	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		ApplicationContext context = new ClassPathXmlApplicationContext("SpringLib/create_prsn.xml");
-		Cpprsn user = (Cpprsn) context.getBean(Type);
+		ApplicationContext context = new ClassPathXmlApplicationContext("create_prsn.xml");
+		Cpprsn user = (Cpprsn) context.getBean("NewOwner");
 		int age = user.getAge();
 		String sex=user.getSex();
 		System.out.println(age);

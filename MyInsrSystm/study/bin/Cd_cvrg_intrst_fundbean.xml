@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
 	<bean id="New_intrst_fund" class="cd.pkg.Cd_cvrg_intrst_fund">
 		<property name="riskCode" value="44440101">
 		</property>

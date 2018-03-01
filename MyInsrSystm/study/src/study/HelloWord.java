@@ -20,8 +20,8 @@ public class HelloWord
 			System.out.println(count);
 		}
 		
-		ApplicationContext context = new ClassPathXmlApplicationContext("SpringLib/create_prsn.xml");
-		Cpprsn user = (Cpprsn) context.getBean(Type);
+		ApplicationContext context = new ClassPathXmlApplicationContext("create_prsn.xml");
+		Cpprsn user = (Cpprsn) context.getBean("NewOwner");
 		Cpprsn prs = new Cpprsn();
 		// Class<?> classnew = prs.getClass();
 		String className = prs.getClass().getName();

@@ -33,8 +33,8 @@ public abstract class CdCvrgAdm extends CvrgAadm
 
 	public static CdCvrgAdm create_evt(Map cvrgNode)
 	{
-		String riskCode = (String) cvrgNode.get(cvrgNode);
-		CdCvrgAdm CdCvrg = findCdcvrg(riskCode);
+		String riskCodeP = (String) cvrgNode.get("risk_code");
+		CdCvrgAdm CdCvrg = findCdcvrg(riskCodeP);
 		CdCvrg.create_to_newBussiness();
 		return CdCvrg;
 	}
@@ -47,9 +47,9 @@ public abstract class CdCvrgAdm extends CvrgAadm
 	private static CdCvrgAdm findCdcvrg(String riskCode)
 	{
 		// TODO 按照riskCode 查询数据库，返回cdCvrg
-		if (riskCode == "44440101") {
+		if (riskCode.equals( "44440101")) {
 			@SuppressWarnings("resource")
-			ApplicationContext context = new ClassPathXmlApplicationContext("Cd_cvrg_intrst_fund.bean.xml");
+			ApplicationContext context = new ClassPathXmlApplicationContext("Cd_cvrg_intrst_fundbean.xml");
 			Cd_cvrg_intrst_fund Cvrg = (Cd_cvrg_intrst_fund) context.getBean("New_intrst_fund");
 			// Cvrg.save_to_db();
 			// Cvrg.create_to_newBussiness();

@@ -9,8 +9,8 @@
 	<configs>
 		<config>SpringLib/say.xml</config>
 		<config>SpringLib/create_prsn.xml</config>
-		<config>src/cd/pkg/Cd_cvrg_intrst_fund.bean.xml</config>
-		<config>src/NewBusiness/NewBussbean.xml</config>
+		<config>SpringLib/NewBussbean.xml</config>
+		<config>SpringLib/Cd_cvrg_intrst_fundbean.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

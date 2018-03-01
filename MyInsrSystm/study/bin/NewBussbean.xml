@@ -42,7 +42,7 @@
 
 		<property name="coverageSetNode">
 			<map>
-				<entry key="riskCode" value="44440101" />
+				<entry key="risk_code" value="44440101" />
 				<entry key="cvrg_type" value="1" />			 <!-- 主附险标志 1为主险 -->
 				<entry key="unit" value="1" />
 				<entry key="bllng_frequency" value="3" />

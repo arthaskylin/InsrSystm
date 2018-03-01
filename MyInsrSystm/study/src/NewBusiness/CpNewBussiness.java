@@ -51,8 +51,9 @@ public class CpNewBussiness
 		String Ralationg = busninessPara.getRelationshipNode();
 		Map insrMessage = busninessPara.getInsuredNode();
 		Cpprsn insr = Cpprsn.createPrsn(insrMessage);
-		if (Ralationg == "1") {
+		if (Ralationg.equals("1") ) {
 			System.out.println("validate");
+			this.l_owner = insr;
 		} else {
 			Cpprsn owner = Cpprsn.createPrsn(ownerMessage);
 			this.l_owner = owner;
