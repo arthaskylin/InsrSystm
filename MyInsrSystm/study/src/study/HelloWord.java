@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import cpprsn.Cpprsn;
 
 public class HelloWord
@@ -16,6 +19,9 @@ public class HelloWord
 			count = count + i;
 			System.out.println(count);
 		}
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("SpringLib/create_prsn.xml");
+		Cpprsn user = (Cpprsn) context.getBean(Type);
 		Cpprsn prs = new Cpprsn();
 		// Class<?> classnew = prs.getClass();
 		String className = prs.getClass().getName();
