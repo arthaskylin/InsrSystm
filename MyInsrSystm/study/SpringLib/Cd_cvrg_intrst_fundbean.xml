@@ -11,7 +11,7 @@
 		</property>
 		<property name="cvrgLevle" ref="cvrgLevle">
 		</property>
-		<property name="cash_formula_id" ref="cash_Valu_Formula">
+		<property name="cash_formula_id" value="Cash0001">
 		</property>
 	</bean>
 	<bean id="cvrgLevle"

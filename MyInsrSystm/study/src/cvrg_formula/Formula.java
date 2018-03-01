@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public abstract class Formula
 {
-	private int formula_id;
+	private String formula_id;
 
-	public int getFormula_id()
+	public String getFormula_id()
 	{
 		return formula_id;
 	}
 
-	public void setFormula_id(int formula_id)
+	public void setFormula_id(String formula_id)
 	{
 		this.formula_id = formula_id;
 	}
