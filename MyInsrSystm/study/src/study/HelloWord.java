@@ -17,9 +17,34 @@ public class HelloWord
 			System.out.println(count);
 		}
 		Cpprsn prs = new Cpprsn();
-//		String cllss = prs.getClass();
-//		System.out.println(cllss);
+		// Class<?> classnew = prs.getClass();
+		String className = prs.getClass().getName();
+		System.out.println(className);
+
+		try {
+			Cpprsn newInst = (Cpprsn) Class.forName(className).newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("88888888888888");
+
+		// String className2 = prs.getClass().getName();
+		System.out.println("88888888888888");
 		// cll oo=new cll();
+
+	}
+
+	public class Cp_cvrg_adm
+	{
+		private String type;
+
+		public Cp_cvrg_adm list_cvrg_layers() {
+			if 
+			(type=="initial")
+			{}
+			return null;
+		}
 
 	}
 }

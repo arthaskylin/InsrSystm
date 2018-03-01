@@ -17,7 +17,8 @@ import header.Cp_contract;
 
 public class CpCvrgAdm extends CvrgAadm
 {
-	// 保单级别，子类为具体保项
+	// 子类为具体保项
+	private String l_decrpt;
 	private CvrgStatus status;
 	private CvrgStatusReason statusReason;
 	private Suspend suspend;
@@ -32,14 +33,27 @@ public class CpCvrgAdm extends CvrgAadm
 	private Calendar prem_expiry_date;// 缴费终期
 	private Calendar end_date;// 保单终止时间
 
-	public static CpCvrgAdm create_evt(Map cvrgNode)
+	public static CpCvrgAdm create_evt(CdCvrgAdm cdCvrg, Map cvrgNode)
 	{
-		String riskCode = (String) cvrgNode.get(cvrgNode);
-		CdCvrgAdm CdCvrg = CdCvrgAdm.createCdcvrgForNewBuss(riskCode);
-		//CdCvrg.getClass();
+		// String riskCode = (String) cvrgNode.get(cvrgNode);
+		String cvrlClassName = cdCvrg.getL_cpCvrgName();
+		try {
+			CpCvrgAdm cpCvrg = (CpCvrgAdm) Class.forName(cvrlClassName).newInstance();
+			cpCvrg.initialize(cdCvrg, cvrgNode);
+
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+
+			e.printStackTrace();
+		}
+
 		return null;
 	}
+
 	// 根据cd_cvrg创建cp_cvrg
+	public void initialize(CdCvrgAdm cdCvrg, Map cvrgNode)
+	{
+		
+	};
 
 	public void cvrg_chng_status(CvrgStatus status, CvrgStatusReason Reason)
 	{
@@ -65,6 +79,16 @@ public class CpCvrgAdm extends CvrgAadm
 	public void setStatusReason(CvrgStatusReason statusReason)
 	{
 		this.statusReason = statusReason;
+	}
+
+	public String getL_decrpt()
+	{
+		return l_decrpt;
+	}
+
+	public void setL_decrpt(String l_decrpt)
+	{
+		this.l_decrpt = l_decrpt;
 	}
 
 }

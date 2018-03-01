@@ -10,7 +10,7 @@
 		<config>SpringLib/say.xml</config>
 		<config>SpringLib/create_prsn.xml</config>
 		<config>src/cd/pkg/Cd_cvrg_intrst_fund.bean.xml</config>
-		<config>src/NewBusiness/NewBuss.bean.xml</config>
+		<config>src/NewBusiness/NewBussbean.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

@@ -32,7 +32,7 @@ public class CpNewBussiness
 	public static void newBussStart()
 	{ // 静态方法，入口
 		@SuppressWarnings("resource")
-		ApplicationContext context = new ClassPathXmlApplicationContext("NewBuss.bean.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("NewBussbean.xml");
 		CpNewBussiness NewBuss = (CpNewBussiness) context.getBean("NewBuss");
 		verifyParam();
 		NewBuss.process_prsn();
@@ -51,16 +51,20 @@ public class CpNewBussiness
 		String Ralationg = busninessPara.getRelationshipNode();
 		Map insrMessage = busninessPara.getInsuredNode();
 		Cpprsn insr = Cpprsn.createPrsn(insrMessage);
-		Cpprsn owner = Cpprsn.createPrsn(ownerMessage);
+		if (Ralationg == "1") {
+			System.out.println("validate");
+		} else {
+			Cpprsn owner = Cpprsn.createPrsn(ownerMessage);
+			this.l_owner = owner;
+		}
 		this.l_insur = insr;
-		this.l_owner = owner;
 	}
 
 	public void process_coverages()
 	{
 		Map cvrgNode = busninessPara.getCoverageSetNode();
-
-		CpCvrgAdm cpCvrg = CpCvrgAdm.create_evt(cvrgNode);
+		CdCvrgAdm cdCvrg = CdCvrgAdm.create_evt(cvrgNode);
+		CpCvrgAdm cpCvrg = CpCvrgAdm.create_evt(cdCvrg, cvrgNode);
 		// l_cpCvrg.add(cpCvrg);
 
 	}// 创建cp 保项实例
