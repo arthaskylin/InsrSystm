@@ -1,4 +1,4 @@
-package study;
+package dao.pkg;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 public class BaseDao<T, Tb>
 {
-	// T 泛型：变量类型的参数化，
+	// T泛型：变量类型的参数化，
 	// 用Object强制转换的话， 要事先知道各个Object具体类型是什么，才能做出正确转换
 	public static final String SQL_INSERT = "insert";
 	public static final String SQL_UPDATE = "update";
@@ -34,7 +34,7 @@ public class BaseDao<T, Tb>
 			System.out.println("--------------------");
 		}
 		int[] objTypes = this.setArgsTypes(entity, SQL_INSERT);
-		// jdbcTemplate.update(sql, obj, objTypes);
+		 jdbcTemplate.update(sql, obj, objTypes);
 	}
 
 	public void upate(T entity)
@@ -42,6 +42,8 @@ public class BaseDao<T, Tb>
 		String sql = this.SQl(SQL_UPDATE);
 		Object[] obj = this.setArgs(entity, SQL_UPDATE);
 		int[] objTypes = this.setArgsTypes(entity, SQL_UPDATE);
+		System.out.println(sql);
+		System.out.println(sql);
 		jdbcTemplate.update(sql, obj, objTypes);
 	}
 
@@ -62,6 +64,7 @@ public class BaseDao<T, Tb>
 
 	public T findById(Serializable id)
 	{
+		
 		String sql = "SELECt * FROM  " + entityClass.getSimpleName() + "  where id=?";
 		RowMapper<T> rowMapper = BeanPropertyRowMapper.newInstance(entityClass);
 		if (jdbcTemplate.query(sql, rowMapper, id).size() > 0)
@@ -113,13 +116,17 @@ public class BaseDao<T, Tb>
 			sb.append("UPDATE ").append(entityClass.getSimpleName() + " SET ");
 			for (int i = 0; i < field.length; i++) {
 				field[i].setAccessible(true);
-				if (field[i].getName().equalsIgnoreCase("id")) {
+				
+				String name=field[i].getName();
+				System.out.println("name-----------");
+				System.out.println(name);
+				if (field[i].getName().equalsIgnoreCase("idntfr")) {
 					continue;
 				}
 				sb.append(field[i].getName()).append(" = ").append("?,");
 			}
 			sb.deleteCharAt(sb.length() - 1);
-			sb.append(" WHERE id=?");
+			sb.append(" WHERE idntfr=?");
 		} else if (SQL_DELETE.equals(sqlFla)) {
 			sb.append("DELETE FROM ").append(entityClass.getSimpleName());
 			sb.append(" WHERE id=?");
@@ -155,15 +162,19 @@ public class BaseDao<T, Tb>
 					e.printStackTrace();
 				}
 			}
+			
 			Object[] objArr = new Object[fields.length];
 			System.arraycopy(obj, 1, objArr, 0, fields.length - 1);
 			objArr[obj.length - 1] = obj[0];
 			return objArr;
+			
 		} else if (SQL_DELETE.equals("delete")) {
 			Object[] obj = new Object[1];
 			fields[0].setAccessible(true);
+			//
 			try {
 				obj[0] = fields[0].get(entity);
+				//获取属性的值用get(Object obj)的方法，但是获取私有属性的时候必须先设置Accessible为true，然后才能获取
 			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {

@@ -1,26 +1,60 @@
 package study;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cpprsn.Cpprsn;
+import dao.pkg.BaseDao;
+import dao.pkg.SysBaseDao;
 
 public class HelloWord
 {
 	public static void main(String[] args)
 	{
-		Cpprsn prsn = new Cpprsn();
-		prsn.setName("kylin");
-		prsn.setIdntfr("500235");
-		prsn.setSex("man");
-
-		@SuppressWarnings("unchecked")
-		BaseDao<Cpprsn, Cpprsn> mydao = new PrsnDao();
-		mydao.save(prsn);
+//		Cpprsn prsn = new Cpprsn();
+//		prsn.setName("kylin");
+//		prsn.setIdntfr("500235");
+//		prsn.setSex("man");
+//
+//		//@SuppressWarnings("unchecked")
+//		
+//		PrsnDao prsnDao=new PrsnDao();
+//		prsnDao.upate(prsn);
+////		//.save(prsn);
+		 Map<String, String> maps = new HashMap<String, String>();  
+		maps.put("k111", "111a");  
+        maps.put("k222", "222b");  
+        maps.put("k333", "333c");  
+        maps.put("k44", "444d");  
+        maps.put("k555", "555e");  
+        maps.put("k666", "666f");  
+          
+        int siz=maps.size();
+        System.out.println("Map集合大小为："+siz);
+     /*   for(String str : maps.keySet()){ 
+        	System.out.println("****************");
+            System.out.println(str + ":" + maps.get(str));  
+        }  
+          */
+        
+  
+        		
+        		
+        		
+//        System.out.println("--------------");  
+//          
+//        for(Entry<String, String> str : maps.entrySet()){  
+//            System.out.println(str.getKey());
+//            System.out.println(str.getValue());
+//            //+ "   " + str.getKey() + ":" + str.getValue());  
+//        }  
 
 	}
 
