@@ -24,7 +24,7 @@ public class Cpprsn
 
 	public static Cpprsn createPrsn(Map message)
 	{
-		Cpprsn newPrsn=new Cpprsn();
+		Cpprsn newPrsn = new Cpprsn();
 		newPrsn.processInfo(message);
 		return newPrsn;
 	}
@@ -32,7 +32,7 @@ public class Cpprsn
 	private void processInfo(Map message)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getBirthDate()
@@ -133,7 +133,8 @@ public class Cpprsn
 	protected void varify_idntfr(String idntfr)
 	{
 		if (idntfr.length() != 18) {
-			tool.pkg.log.log_error("证件号长度不够");
+			System.out.println("证件号长度");
+			// tool.pkg.log.log_error("证件号长度不够");
 		}
 	}
 
