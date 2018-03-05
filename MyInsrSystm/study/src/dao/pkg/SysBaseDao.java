@@ -1,6 +1,5 @@
 package dao.pkg;
 
-import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.sql.Types;
@@ -11,7 +10,6 @@ import java.util.Map.Entry;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 public class SysBaseDao<T> {
 	private Class<T> entityObjClass;
@@ -24,7 +22,9 @@ public class SysBaseDao<T> {
 	@SuppressWarnings("unchecked")
 	public SysBaseDao() {
 		ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+		//Type 是 Java 编程语言中所有类型的公共高级接口。它们包括原始类型、参数化类型、数组类型、类型变量和基本类型。
 		entityObjClass = (Class<T>) type.getActualTypeArguments()[0];
+		//GetActualTypeArguments()这个方法的返回值是一个Type的数组
 		System.out.println(entityObjClass);
 	}
 

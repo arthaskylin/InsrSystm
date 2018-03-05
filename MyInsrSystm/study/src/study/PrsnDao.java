@@ -4,6 +4,6 @@ import cpprsn.Cpprsn;
 import dao.pkg.BaseDao;
 import dao.pkg.SysBaseDao;
 
-public class PrsnDao extends BaseDao<Cpprsn, Cpprsn> {
+public class PrsnDao extends SysBaseDao<Cpprsn> {
 
 }

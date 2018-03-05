@@ -1,5 +1,6 @@
 package study;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,43 +19,37 @@ public class HelloWord
 {
 	public static void main(String[] args)
 	{
-//		Cpprsn prsn = new Cpprsn();
-//		prsn.setName("kylin");
-//		prsn.setIdntfr("500235");
-//		prsn.setSex("man");
-//
-//		//@SuppressWarnings("unchecked")
-//		
-//		PrsnDao prsnDao=new PrsnDao();
-//		prsnDao.upate(prsn);
-////		//.save(prsn);
-		 Map<String, String> maps = new HashMap<String, String>();  
-		maps.put("k111", "111a");  
-        maps.put("k222", "222b");  
-        maps.put("k333", "333c");  
-        maps.put("k44", "444d");  
-        maps.put("k555", "555e");  
-        maps.put("k666", "666f");  
-          
-        int siz=maps.size();
-        System.out.println("Map集合大小为："+siz);
-     /*   for(String str : maps.keySet()){ 
-        	System.out.println("****************");
-            System.out.println(str + ":" + maps.get(str));  
-        }  
-          */
-        
-  
-        		
-        		
-        		
-//        System.out.println("--------------");  
-//          
-//        for(Entry<String, String> str : maps.entrySet()){  
-//            System.out.println(str.getKey());
-//            System.out.println(str.getValue());
-//            //+ "   " + str.getKey() + ":" + str.getValue());  
-//        }  
+
+		Cpprsn prsn = new Cpprsn();
+		prsn.setName("kylin");
+		prsn.setIdntfr("500235");
+		prsn.setSex("m");
+
+		// @SuppressWarnings("unchecked")
+
+		PrsnDao prsnDao = (PrsnDao) new SysBaseDao<Cpprsn>();
+		prsnDao.save(prsn);
+
+		//// //.save(prsn);
+		/*
+		 * Map<String, String> maps = new HashMap<String, String>(); maps.put("k111",
+		 * "111a"); maps.put("k222", "222b"); maps.put("k333", "333c"); maps.put("k44",
+		 * "444d"); maps.put("k555", "555e"); maps.put("k666", "666f");
+		 * 
+		 * int siz=maps.size(); System.out.println("Map集合大小为："+siz);
+		 */
+		/*
+		 * for(String str : maps.keySet()){ System.out.println("****************");
+		 * System.out.println(str + ":" + maps.get(str)); }
+		 */
+
+		// System.out.println("--------------");
+		//
+		// for(Entry<String, String> str : maps.entrySet()){
+		// System.out.println(str.getKey());
+		// System.out.println(str.getValue());
+		// //+ " " + str.getKey() + ":" + str.getValue());
+		// }
 
 	}
 
