@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.stream.IntStream;
 import java.util.Map.Entry;
 
 import org.springframework.context.ApplicationContext;
@@ -19,19 +21,19 @@ public class HelloWord
 {
 	public static void main(String[] args)
 	{
-
-		Cpprsn prsn = new Cpprsn();
-		prsn.setName("kylin");
-		prsn.setIdntfr("500235");
-		prsn.setSex("m");
-
-		// @SuppressWarnings("unchecked")
-
-		PrsnDao prsnDao = (PrsnDao) new SysBaseDao<Cpprsn>();
-		prsnDao.save(prsn);
-
-		//// //.save(prsn);
+		
+		
+		
 		/*
+		 * Cpprsn prsn = new Cpprsn(); prsn.setName("kylin"); prsn.setIdntfr("500235");
+		 * prsn.setSex("m");
+		 * 
+		 * // @SuppressWarnings("unchecked")
+		 * 
+		 * PrsnDao prsnDao = (PrsnDao) new SysBaseDao<Cpprsn>(); prsnDao.save(prsn);
+		 * 
+		 * //// //.save(prsn);
+		 */		/*
 		 * Map<String, String> maps = new HashMap<String, String>(); maps.put("k111",
 		 * "111a"); maps.put("k222", "222b"); maps.put("k333", "333c"); maps.put("k44",
 		 * "444d"); maps.put("k555", "555e"); maps.put("k666", "666f");
