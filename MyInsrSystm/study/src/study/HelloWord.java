@@ -14,6 +14,8 @@ import java.util.Map.Entry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import batch.PrsnProcessbatch;
+import batch.prsnReadeBatch;
 import cpprsn.Cpprsn;
 import dao.pkg.BaseDao;
 import dao.pkg.SysBaseDao;
@@ -22,10 +24,14 @@ public class HelloWord
 {
 	public static void main(String[] args)
 	{
-		
-		
+
 		LinkedList<Cpprsn> prsnlst = new LinkedList<Cpprsn>();
-		
+
+		Thread read = new prsnReadeBatch(prsnlst);
+		Thread process = new PrsnProcessbatch(prsnlst);
+		read.start();
+		process.start();
+
 		/*
 		 * Cpprsn prsn = new Cpprsn(); prsn.setName("kylin"); prsn.setIdntfr("500235");
 		 * prsn.setSex("m");
@@ -35,13 +41,13 @@ public class HelloWord
 		 * PrsnDao prsnDao = (PrsnDao) new SysBaseDao<Cpprsn>(); prsnDao.save(prsn);
 		 * 
 		 * //// //.save(prsn);
-		 */		/*
-		 * Map<String, String> maps = new HashMap<String, String>(); maps.put("k111",
-		 * "111a"); maps.put("k222", "222b"); maps.put("k333", "333c"); maps.put("k44",
-		 * "444d"); maps.put("k555", "555e"); maps.put("k666", "666f");
-		 * 
-		 * int siz=maps.size(); System.out.println("Map集合大小为："+siz);
-		 */
+		 */ /*
+			 * Map<String, String> maps = new HashMap<String, String>(); maps.put("k111",
+			 * "111a"); maps.put("k222", "222b"); maps.put("k333", "333c"); maps.put("k44",
+			 * "444d"); maps.put("k555", "555e"); maps.put("k666", "666f");
+			 * 
+			 * int siz=maps.size(); System.out.println("Map集合大小为："+siz);
+			 */
 		/*
 		 * for(String str : maps.keySet()){ System.out.println("****************");
 		 * System.out.println(str + ":" + maps.get(str)); }

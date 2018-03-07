@@ -132,10 +132,11 @@ public class Cpprsn
 
 	protected void varify_idntfr(String idntfr)
 	{
-		if (idntfr.length() != 18) {
-			System.out.println("证件号长度");
-			// tool.pkg.log.log_error("证件号长度不够");
-		}
+		/*
+		 * if (idntfr.length() != 18) { System.out.println("证件号长度");
+		 */
+		// tool.pkg.log.log_error("证件号长度不够");
+		// }
 	}
 
 }

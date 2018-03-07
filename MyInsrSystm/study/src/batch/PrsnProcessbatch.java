@@ -17,7 +17,9 @@ public class PrsnProcessbatch extends Thread
 		while (true) {
 			int Lenght = prsnlst.size();
 			while (Lenght <= 0) {
+
 				System.out.println("process wait. prsnlst size=" + prsnlst.size());
+				notifyAll();
 				try {
 					wait();
 				} catch (InterruptedException e) {
