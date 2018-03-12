@@ -18,10 +18,8 @@ public class Cpprsn
 	private String sex;// m为男，f为女
 	private String occ_code;
 	// private String type; // 1：投保人，2:被保人。只是在新保创建的时候使用，不存入数据库
-
 	public Cpprsn() {
 	}
-
 	public static Cpprsn createPrsn(Map message)
 	{
 		Cpprsn newPrsn = new Cpprsn();

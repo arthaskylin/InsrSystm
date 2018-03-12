@@ -15,26 +15,23 @@ public class PrsnProcessbatch extends Thread
 	public void processLst()
 	{
 		while (true) {
-			int Lenght = prsnlst.size();
-			while (Lenght <= 0) {
-
-				System.out.println("process wait. prsnlst size=" + prsnlst.size());
-				notifyAll();
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 			synchronized (prsnlst) {
+				while (prsnlst.size() <= 0) {
+					System.out.println("process wait. prsnlst size=" + prsnlst.size());
+					try {
+						prsnlst.notify();
+						prsnlst.wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				Cpprsn Prsn = prsnlst.getFirst();
 				String ID = Prsn.getIdntfr();
 				System.out.println("process persn. id =" + ID);
+				prsnlst.remove(0);
 			}
-
 		}
-
 	}
 
 	public void run()

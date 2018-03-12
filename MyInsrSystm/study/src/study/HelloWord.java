@@ -29,8 +29,10 @@ public class HelloWord
 
 		Thread read = new prsnReadeBatch(prsnlst);
 		Thread process = new PrsnProcessbatch(prsnlst);
+		Thread process2 = new PrsnProcessbatch(prsnlst);
 		read.start();
 		process.start();
+		process2.start();
 
 		/*
 		 * Cpprsn prsn = new Cpprsn(); prsn.setName("kylin"); prsn.setIdntfr("500235");
