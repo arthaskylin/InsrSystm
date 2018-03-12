@@ -17,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import batch.PrsnProcessbatch;
 import batch.prsnReadeBatch;
 import cpprsn.Cpprsn;
-import dao.pkg.BaseDao;
+
 import dao.pkg.SysBaseDao;
 
 public class HelloWord
