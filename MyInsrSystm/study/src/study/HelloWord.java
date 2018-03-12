@@ -24,9 +24,7 @@ public class HelloWord
 {
 	public static void main(String[] args)
 	{
-
 		LinkedList<Cpprsn> prsnlst = new LinkedList<Cpprsn>();
-
 		Thread read = new prsnReadeBatch(prsnlst);
 		Thread process = new PrsnProcessbatch(prsnlst);
 		Thread process2 = new PrsnProcessbatch(prsnlst);
@@ -73,8 +71,11 @@ public class HelloWord
  * System.out.println(count); }
  * 
  * ApplicationContext context = new
- * ClassPathXmlApplicationContext("create_prsn.xml"); Cpprsn user = (Cpprsn)
- * context.getBean("NewOwner"); Cpprsn prs = new Cpprsn(); // Class<?> classnew
+ * ClassPathXmlApplicationContext("create_prsn.xml"); 
+ * Cpprsn user = (Cpprsn)context.getBean("NewOwner"); 
+ * Cpprsn prs = new Cpprsn(); 
+ * 
+ * // Class<?> classnew
  * = prs.getClass(); String className = prs.getClass().getName();
  * System.out.println(className);
  * 

@@ -7,13 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 public class SysBaseDao<T> {
 	private Class<T> entityObjClass;
-	Map<String, Object> paraMap = null;
+	private Map<String, Object> paraMap = null;
 	public static final String SQL_INSERT = "insert";
 	public static final String SQL_UPDATE = "update";
 	public static final String SQL_DELETE = "delete";
@@ -22,9 +24,9 @@ public class SysBaseDao<T> {
 	@SuppressWarnings("unchecked")
 	public SysBaseDao() {
 		ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-		//Type 是 Java 编程语言中所有类型的公共高级接口。它们包括原始类型、参数化类型、数组类型、类型变量和基本类型。
+		// Type 是 Java 编程语言中所有类型的公共高级接口。它们包括原始类型、参数化类型、数组类型、类型变量和基本类型。
 		entityObjClass = (Class<T>) type.getActualTypeArguments()[0];
-		//GetActualTypeArguments()这个方法的返回值是一个Type的数组
+		// GetActualTypeArguments()这个方法的返回值是一个Type的数组
 		System.out.println(entityObjClass);
 	}
 
@@ -33,9 +35,7 @@ public class SysBaseDao<T> {
 		System.out.println(sql);
 		Object[] value = this.setValueArgs(entityObjObj, SQL_INSERT);
 		for (int i = 0; i < value.length; i++) {
-			System.out.println("--------------------");
 			System.out.println(value[i]);
-			System.out.println("--------------------");
 		}
 		int[] objTypes = this.setArgsTypes(entityObjObj, SQL_INSERT);
 		jdbcTemplate.update(sql, value, objTypes);
@@ -74,8 +74,7 @@ public class SysBaseDao<T> {
 		sqlString.delete(sqlString.length() - 5, sqlString.length() - 1);
 		String sql = sqlString.toString();
 		RowMapper<T> rowMapper = BeanPropertyRowMapper.newInstance(entityObjClass);
-		if (jdbcTemplate.query(sql, rowMapper).size() > 0)
-		{
+		if (jdbcTemplate.query(sql, rowMapper).size() > 0) {
 			return jdbcTemplate.query(sql, rowMapper).get(0);
 		}
 		return null;
@@ -299,7 +298,9 @@ public class SysBaseDao<T> {
 		return jdbcTemplate;
 	}
 
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
+	public void setJdbcTemplate() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("Dao.xml");
+		JdbcTemplate jdbcTem = (JdbcTemplate) context.getBean("jdbctem");
+		this.jdbcTemplate = jdbcTem;
 	}
 }
